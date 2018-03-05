@@ -1,0 +1,70 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id "org.jetbrains.kotlin.jvm" version "1.2.21"
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
+group 'com.cognifide.gradle'
+version '1.0.0'
+description = 'Gradle SC Plugin'
+defaultTasks = ['clean', 'build', 'publishToMavenLocal']
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+
+    compile "org.apache.felix:org.apache.felix.scr.generator:1.13.0"
+    compile "org.apache.felix:org.apache.felix.scr.ant:1.13.0"
+}
+
+repositories {
+    jcenter()
+}
+
+
+def compileOptions = {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileKotlin compileOptions
+compileTestKotlin compileOptions
+
+gradlePlugin {
+    plugins {
+        scr {
+            id = "com.cognifide.scr"
+            implementationClass = "com.cognifide.gradle.scr.ScrPlugin"
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+test.dependsOn publishToMavenLocal
+check.dependsOn publishToMavenLocal
+
+bintray {
+    user = project.properties.get('bintrayUser') ?: System.getenv('BINTRAY_USER')
+    key = project.properties.get('bintrayKey') ?: System.getenv('BINTRAY_KEY')
+    publications = ['mavenJava']
+    pkg {
+        repo = 'maven-public'
+        name = 'gradle-scr-plugin'
+        userOrg = 'cognifide'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/Cognifide/gradle-aem-plugin.git'
+        labels = ['scr', 'osgi', 'Service Component Runtime', 'Declarative Services']
+        version {
+            name = project.version
+            desc = "${project.description} ${project.version}"
+            vcsTag = project.version
+        }
+    }
+    publish = true
+}
