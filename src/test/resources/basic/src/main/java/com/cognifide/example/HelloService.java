@@ -7,7 +7,7 @@ import org.osgi.service.component.annotations.Component;
     immediate = true,
     service = HelloService.class
 )
-class HelloService {
+public class HelloService {
 
   @Activate
   protected void activate() {

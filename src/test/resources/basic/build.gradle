@@ -1,6 +1,19 @@
-plugins {
-    id 'com.cognifide.scr'
+//plugins {
+//    id 'com.cognifide.scr'
+//}
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://dl.bintray.com/twcable/aem" }
+    }
+
+    dependencies {
+        classpath "com.twcable.gradle:gradle-plugin-scr:1.2.0"
+    }
 }
+
+apply plugin: 'java'
+apply plugin: 'com.twcable.scr'
 
 group = 'com.company.app'
 version = '1.0.0'
