@@ -12,10 +12,11 @@ defaultTasks = ['clean', 'build', 'publishToMavenLocal']
 
 dependencies {
     compile gradleApi()
-    compile localGroovy()
 
-    compile "org.apache.felix:org.apache.felix.scr.generator:1.13.0"
-    compile "org.apache.felix:org.apache.felix.scr.ant:1.13.0"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.2.21"
+    compile 'org.jetbrains.kotlin:kotlin-reflect:1.2.21'
+    compile "org.apache.felix:org.apache.felix.scr.generator:1.18.0"
+    compile "org.apache.felix:org.apache.felix.scr.ant:1.18.0"
 }
 
 repositories {
