@@ -9,6 +9,8 @@ import org.gradle.api.tasks.SourceSet
 open class ScrPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
+        project.plugins.apply(JavaPlugin::class.java)
+
         project.configureSourceSet(
                 SourceSet.MAIN_SOURCE_SET_NAME,
                 JavaPlugin.CLASSES_TASK_NAME,

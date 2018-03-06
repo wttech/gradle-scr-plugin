@@ -1,0 +1,15 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'com.cognifide.scr') {
+                useModule('com.cognifide.gradle:scr-plugin:1.0.0')
+            }
+        }
+    }
+}
+
+rootProject.name = 'example'

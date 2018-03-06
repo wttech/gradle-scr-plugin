@@ -17,6 +17,10 @@ dependencies {
     compile 'org.jetbrains.kotlin:kotlin-reflect:1.2.21'
     compile "org.apache.felix:org.apache.felix.scr.generator:1.18.0"
     compile "org.apache.felix:org.apache.felix.scr.ant:1.18.0"
+    compile 'org.reflections:reflections:0.9.9'
+
+    testCompile gradleTestKit()
+    testCompile 'junit:junit:4.12'
 }
 
 repositories {

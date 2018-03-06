@@ -1,0 +1,17 @@
+plugins {
+    id 'com.cognifide.scr'
+}
+
+group = 'com.company.app'
+version = '1.0.0'
+description = 'Example'
+
+repositories {
+    jcenter()
+    mavenLocal()
+}
+
+dependencies {
+    compileOnly group: 'org.osgi', name: 'osgi.cmpn', version: '6.0.0'
+    compileOnly group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+}
