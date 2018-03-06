@@ -55,13 +55,13 @@ open class ScrGenerateTask : DefaultTask() {
         logger.info("Generating SCR descriptor files basing on classes at path '$classesDir' from $sourceSet")
 
         val antProject = project.ant.project
-        val runtimePath = sourceSet.runtimeClasspath.asPath
+        val runtimePath = sourceSet.compileClasspath.asPath + sourceSet.runtimeClasspath.asPath
 
         val scrTask = SCRDescriptorTask().apply {
             project = antProject
             setSrcdir(classesDir)
             setDestdir(classesDir)
-            setClasspath(Path(antProject, runtimePath))
+            setClasspath(Path(antProject, runtimePath)) // TODO fixme!
             setStrictMode(false)
             isScanClasses = true
         }
