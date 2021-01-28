@@ -63,7 +63,7 @@ bintray {
         name = 'gradle-scr-plugin'
         userOrg = 'cognifide'
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/Cognifide/gradle-aem-plugin.git'
+        vcsUrl = 'https://github.com/wttech/gradle-aem-plugin.git'
         labels = ['scr', 'osgi', 'Service Component Runtime', 'Declarative Services']
         version {
             name = project.version
